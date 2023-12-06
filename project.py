@@ -12,7 +12,7 @@ def get_device_info(mac):
         api_endpoint = f"https://api.macvendors.com/{mac}"
         response = requests.get(api_endpoint)
         if response.status_code == 200:
-            return response.text  # Retrieve the vendor/brand information
+            return response.text 
         else:
             return "N/A"  
     except Exception as e:
@@ -31,8 +31,8 @@ def scan_local_network(ip_range):
             device_info = {
                 'ip': received.psrc,
                 'mac': received.hwsrc,
-                'type': get_device_type(received.psrc),  # Fetch device type
-                'brand': get_device_info(received.hwsrc),  # Fetch brand using OUI lookup
+                'type': get_device_type(received.psrc),  
+                'brand': get_device_info(received.hwsrc),  
             }
             devices.append(device_info)
 
